@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 
 app = Flask(__name__)
 
@@ -15,6 +15,12 @@ def name(name):
 def number(number):
     print('Type:',type(number))
     return f"{number}"
+
+@app.route("/page")
+def email():
+    email = request.args.get("email")
+    password = request.args.get("password")
+    return f"{email},{password}"
 
 @app.route("/index")
 def index():
